@@ -7,7 +7,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(
     cadex_task
-    src/main.cpp)
+    src/main.cpp
+    src/curves/circle.cpp
+    src/curves/curve.cpp
+)
 
 target_compile_options(
     cadex_task PRIVATE
