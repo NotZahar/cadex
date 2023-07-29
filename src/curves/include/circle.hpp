@@ -16,7 +16,7 @@ namespace curves {
 
     public:
         Circle() = delete;
-        Circle(double _R);
+        Circle(double _R) noexcept;
 
         Circle(const Circle& _other) noexcept;
         Circle(Circle&& _other) noexcept;
