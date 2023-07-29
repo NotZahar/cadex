@@ -4,45 +4,46 @@ namespace curves {
     Circle::Circle(double _R) noexcept 
         : ellipse(_R, _R) {}
 
-    Circle::Circle(const Circle& _other) noexcept
+    Circle::Circle(const Circle& _other) noexcept 
         : ellipse(_other.ellipse) {}
 
-    Circle::Circle(Circle&& _other) noexcept 
-        : ellipse(std::move(_other.ellipse)) {}
-
-    Circle& operator=(const Circle& _other) noexcept;
-    Circle& operator=(Circle&& _other) noexcept;
-
-    vector3 getPoint(const double _t) const noexcept override;
-    vector3 getFirstDerivative(const double _t) const noexcept override;
-
-    void setR(double _R);
-    double getR() const;
-    
-    /*Ellipse::Ellipse(double _Rx, double _Ry) noexcept 
-        : Rx(_Rx <= 0. ? DEFAULT_RADIUS : _Rx), Ry(_Ry <= 0. ? DEFAULT_RADIUS : _Ry) {}
-
-    vector3 Ellipse::getPoint(const double _t) const {
-        return { Rx * std::cos(_t), Ry * std::sin(_t), 0 };
+    Circle::Circle(Circle&& _other) noexcept
+        : ellipse(DEFAULT_RADIUS, DEFAULT_RADIUS) {
+        *this = std::move(_other);
     }
 
-    vector3 Ellipse::getFirstDerivative(const double _t) const {
-        return { -Rx * std::sin(_t), Ry * std::cos(_t), 0 };
+    Circle& Circle::operator=(const Circle& _other) noexcept {
+        if (this != &_other) {
+            ellipse = _other.ellipse;
+        }
+        
+        return *this;
     }
 
-    void Ellipse::setRx(double _Rx) {
-        Rx = (_Rx <= 0 ? Rx : _Rx);
+    Circle& Circle::operator=(Circle&& _other) noexcept {
+        if (this != &_other) {
+            ellipse = _other.ellipse;
+
+            _other.ellipse = { DEFAULT_RADIUS, DEFAULT_RADIUS };
+        }
+
+        return *this;
     }
 
-    void Ellipse::setRy(double _Ry) {
-        Ry = (_Ry <= 0 ? Ry : _Ry);
+    vector3 Circle::getPoint(const double _t) const noexcept {
+        return ellipse.getPoint(_t);
     }
 
-    double Ellipse::getRx() const {
-        return Rx;
+    vector3 Circle::getFirstDerivative(const double _t) const noexcept {
+        return ellipse.getFirstDerivative(_t);
     }
 
-    double Ellipse::getRy() const {
-        return Ry;
-    }*/
+    void Circle::setR(double _R) {
+        ellipse.setRx(_R);
+        ellipse.setRy(_R);
+    }
+
+    double Circle::getR() const {
+        ellipse.getRx();
+    }
 }

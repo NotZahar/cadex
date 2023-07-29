@@ -26,8 +26,8 @@ namespace curves {
         Helix& operator=(Helix&& _other) noexcept;
 
     public:
-        Vector3 getPoint(const double _t) const noexcept override;
-        Vector3 getFirstDerivative(const double _t) const noexcept override;
+        vector3 getPoint(const double _t) const noexcept override;
+        vector3 getFirstDerivative(const double _t) const noexcept override;
 
         void setR(double _R);
         void setSTEP(double _STEP);

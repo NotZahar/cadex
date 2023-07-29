@@ -22,11 +22,11 @@ namespace curves {
         Ellipse() = delete;
         Ellipse(double _Rx, double _Ry) noexcept;
 
-        Ellipse(const Ellipse&) noexcept = default;
-        Ellipse(Ellipse&&) noexcept = default;
+        Ellipse(const Ellipse& _other) noexcept;
+        Ellipse(Ellipse&& _other) noexcept;
 
-        Ellipse& operator=(const Ellipse&) noexcept = default;
-        Ellipse& operator=(Ellipse&&) noexcept = default;
+        Ellipse& operator=(const Ellipse& _other) noexcept;
+        Ellipse& operator=(Ellipse&& _other) noexcept;
 
     public:
         vector3 getPoint(const double _t) const override;
