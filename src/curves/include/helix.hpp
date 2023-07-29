@@ -6,30 +6,33 @@
 /*
     x(t) = R * cos(t)
     y(t) = R * sin(t)
-    z(t) = STEP * t // TODO: here 
+    z(t) = STEP * t 
 */
 
 namespace curves {
     class Helix : public Curve {
     protected:
-        Ellipse ellipse;
+        Circle circle;
+        double STEP;
 
     public:
-        Circle() = delete;
-        Circle(double _R);
+        Helix() = delete;
+        Helix(double _R, double _STEP);
 
-        Circle(const Circle& _other) noexcept;
-        Circle(Circle&& _other) noexcept;
+        Helix(const Helix& _other) noexcept;
+        Helix(Helix&& _other) noexcept;
 
-        Circle& operator=(const Circle& _other) noexcept;
-        Circle& operator=(Circle&& _other) noexcept;
+        Helix& operator=(const Helix& _other) noexcept;
+        Helix& operator=(Helix&& _other) noexcept;
 
     public:
         Vector3 getPoint(const double _t) const noexcept override;
         Vector3 getFirstDerivative(const double _t) const noexcept override;
 
         void setR(double _R);
+        void setSTEP(double _STEP);
         double getR() const;
+        double getSTEP() const;
     };
 }
 

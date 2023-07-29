@@ -1,11 +1,15 @@
 #ifndef ELLIPSE_H
 #define ELLIPSE_H
 
+#include <cmath>
+
 #include "curve.hpp"
+#include "../utility/constants.hpp"
 
 /*
     x(t) = Rx * cos(t)
     y(t) = Ry * sin(t)
+    z(t) = 0
 */
 
 namespace curves {
@@ -25,8 +29,8 @@ namespace curves {
         Ellipse& operator=(Ellipse&&) noexcept = default;
 
     public:
-        Vector3 getPoint(const double _t) const override;
-        Vector3 getFirstDerivative(const double _t) const override;
+        vector3 getPoint(const double _t) const override;
+        vector3 getFirstDerivative(const double _t) const override;
 
         void setRx(double _Rx);
         void setRy(double _Ry);

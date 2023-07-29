@@ -6,6 +6,7 @@
 /*
     x(t) = R * cos(t)
     y(t) = R * sin(t)
+    z(t) = 0
 */
 
 namespace curves {
@@ -24,8 +25,8 @@ namespace curves {
         Circle& operator=(Circle&& _other) noexcept;
 
     public:
-        Vector3 getPoint(const double _t) const noexcept override;
-        Vector3 getFirstDerivative(const double _t) const noexcept override;
+        vector3 getPoint(const double _t) const noexcept override;
+        vector3 getFirstDerivative(const double _t) const noexcept override;
 
         void setR(double _R);
         double getR() const;

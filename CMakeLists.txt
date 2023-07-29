@@ -8,8 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(
     cadex_task
     src/main.cpp
-    src/curves/circle.cpp
-    src/curves/curve.cpp
+    src/curves/ellipse.cpp
 )
 
 target_compile_options(
