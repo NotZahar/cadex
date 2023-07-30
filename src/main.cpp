@@ -4,6 +4,7 @@
 #include <random>
 #include <iomanip>
 #include <algorithm>
+#include <omp.h>
 
 #include "curves/include/curve.hpp"
 #include "curves/include/circle.hpp"
@@ -70,14 +71,6 @@ void sortAndPrintSecondContainer(std::vector<std::shared_ptr<curves::Circle>>& _
     }
 }
 
-double computeTotalSumOfRadii(const std::vector<std::shared_ptr<curves::Circle>>& _secondContainer) {
-    return std::accumulate(_secondContainer.cbegin(), _secondContainer.cend(), 0.,
-        [](double sum, const std::shared_ptr<curves::Circle>& circle) {
-            return sum + circle->getR();
-        }
-    );
-}
-
 int main() {
     std::vector<std::shared_ptr<curves::Curve>> container;
     std::vector<std::shared_ptr<curves::Circle>> secondContainer;
@@ -86,7 +79,17 @@ int main() {
     printPointsAndDerivatives(container);
     fillSecondContainer(container, secondContainer);
     sortAndPrintSecondContainer(secondContainer);
-    std::cout << "\ntotal sum: " << computeTotalSumOfRadii(secondContainer) << '\n';
+
+    std::size_t i;
+    const std::size_t size = secondContainer.size();
+    double totalSum = 0;
+    
+    #pragma omp parallel for reduction(+ : totalSum)
+    for(i = 0; i < size; ++i) {
+        totalSum += secondContainer[i]->getR();
+    }
+
+    std::cout << "\ntotal sum: " << totalSum << '\n';
 
     return 0;
 }
