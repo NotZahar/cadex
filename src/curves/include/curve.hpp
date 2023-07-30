@@ -1,6 +1,8 @@
 #ifndef CURVE_H
 #define CURVE_H
 
+#include <string>
+
 #include "../utility/types.hpp"
 
 namespace curves {
@@ -10,6 +12,7 @@ namespace curves {
 
         virtual vector3 getPoint(const double _t) const = 0;
         virtual vector3 getFirstDerivative(const double _t) const = 0;
+        virtual std::string getName() const = 0;
     };
 }
 

@@ -40,11 +40,28 @@ namespace curves {
     }
 
     vector3 Helix::getFirstDerivative(const double _t) const noexcept {
-        sdf
+        vector3 firstDerivative = circle.getFirstDerivative(_t);
+        firstDerivative.z = STEP;
+        return firstDerivative;
     }
 
-    void Helix::setR(double _R);
-    void Helix::setSTEP(double _STEP);
-    double Helix::getR() const;
-    double Helix::getSTEP() const;
+    std::string Helix::getName() const {
+        return "helix";
+    }
+
+    void Helix::setR(double _R) {
+        circle.setR(_R);
+    }
+
+    void Helix::setSTEP(double _STEP) {
+        STEP = _STEP;
+    }
+
+    double Helix::getR() const {
+        return circle.getR();
+    }
+
+    double Helix::getSTEP() const {
+        return STEP;
+    }
 }

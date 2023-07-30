@@ -41,6 +41,10 @@ namespace curves {
         return { -Rx * std::sin(_t), Ry * std::cos(_t), 0 };
     }
 
+    std::string Ellipse::getName() const {
+        return "ellipse";
+    }
+
     void Ellipse::setRx(double _Rx) {
         Rx = (_Rx <= 0 ? Rx : _Rx);
     }

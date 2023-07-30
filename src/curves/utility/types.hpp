@@ -4,4 +4,10 @@ namespace curves {
         double y;
         double z; 
     };
+
+    enum curve : int {
+        CIRCLE,
+        ELLIPSE,
+        HELIX
+    };
 }

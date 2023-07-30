@@ -38,12 +38,16 @@ namespace curves {
         return ellipse.getFirstDerivative(_t);
     }
 
+    std::string Circle::getName() const {
+        return "circle";
+    }
+
     void Circle::setR(double _R) {
         ellipse.setRx(_R);
         ellipse.setRy(_R);
     }
 
     double Circle::getR() const {
-        ellipse.getRx();
+        return ellipse.getRx();
     }
 }

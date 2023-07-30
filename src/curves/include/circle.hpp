@@ -27,6 +27,7 @@ namespace curves {
     public:
         vector3 getPoint(const double _t) const noexcept override;
         vector3 getFirstDerivative(const double _t) const noexcept override;
+        std::string getName() const override;
 
         void setR(double _R);
         double getR() const;
